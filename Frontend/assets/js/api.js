@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = "https://time-based-access-window-system-1.onrender.com/api";
 
 function getToken() {
   return localStorage.getItem("token");
