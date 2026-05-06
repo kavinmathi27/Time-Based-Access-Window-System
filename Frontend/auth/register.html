@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Register | AccessControl</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+
+  <div class="navbar">
+    <a href="../index.html" class="brand">AccessControl</a>
+  </div>
+
+  <div class="container">
+    <h2>Create Account</h2>
+    <p class="text-muted" style="margin-bottom: 1.5rem;">Join us to manage your access securely.</p>
+
+    <input id="name" type="text" placeholder="Full Name">
+    <input id="email" type="email" placeholder="Email Address">
+    <input id="password" type="password" placeholder="Password">
+
+    <select id="role">
+      <option value="USER">User</option>
+      <option value="ADMIN">Admin</option>
+    </select>
+
+    <button onclick="register()">Create Account</button>
+
+    <p class="mt-4 text-sm text-muted">
+      Already have an account? <a href="login.html">Sign in here</a>
+    </p>
+  </div>
+
+  <script src="../assets/js/api.js"></script>
+  <script src="auth.js"></script>
+
+</body>
+
+</html>

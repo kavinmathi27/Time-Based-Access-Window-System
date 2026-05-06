@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard | AccessControl</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body onload="loadUser()">
+
+  <!-- Lock Screen Overlay -->
+  <div id="lock-screen" class="lock-screen">
+    <div class="lock-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+      </svg>
+    </div>
+    <h1>Access Restricted</h1>
+    <p class="text-muted" id="lock-reason">You are outside your allowed access window. Please return during your scheduled shift.</p>
+    <div class="card" style="max-width:400px; background:rgba(30,41,59,0.5); margin-top:1.5rem;">
+      <p class="text-sm text-muted">Your Access Window</p>
+      <div id="next-shift-info" style="font-size:1.1rem; font-weight:600; margin-top:0.5rem;">Contact Admin</div>
+    </div>
+    <button onclick="logout()" style="max-width:200px; margin-top:2rem; background:var(--border);">Logout</button>
+  </div>
+
+  <!-- Main Dashboard -->
+  <div id="office-dashboard" class="hidden">
+    <div id="shift-warning" style="display:none; background:#92400e; color:#fef3c7; padding:0.75rem 1.5rem; font-weight:600; text-align:center; font-size:0.9rem;"></div>
+
+    <div class="navbar">
+      <a href="#" class="brand">AccessControl <span class="text-sm text-muted">| User</span></a>
+      <div style="display:flex; gap:1rem; align-items:center;">
+        <span id="shift-timer" class="text-sm text-muted" style="border:1px solid var(--border); padding:0.25rem 0.75rem; border-radius:99px;">Shift Active</span>
+        <a href="#" onclick="logout()" class="text-muted">Logout</a>
+      </div>
+    </div>
+
+    <div class="dashboard-container">
+      <div class="welcome-banner">
+        <h2 id="welcome-msg">Dashboard</h2>
+        <p class="text-muted">You are logged in and your access window is active.</p>
+      </div>
+
+      <div class="app-grid">
+        <div class="app-card">
+          <div class="app-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </div>
+          <h3>Mail</h3>
+          <p>Access your company email.</p>
+          <span class="app-badge">Open</span>
+        </div>
+
+        <div class="app-card">
+          <div class="app-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+          </div>
+          <h3>Calendar</h3>
+          <p>View your schedule and meetings.</p>
+          <span class="app-badge">Open</span>
+        </div>
+
+        <div class="app-card">
+          <div class="app-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <h3>Tasks</h3>
+          <p>Track your assigned tasks.</p>
+          <span class="app-badge">Open</span>
+        </div>
+
+        <div class="app-card">
+          <div class="app-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+          </div>
+          <h3>Team Chat</h3>
+          <p>Communicate with your team.</p>
+          <span class="app-badge">Open</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/api.js"></script>
+  <script src="../assets/js/utils.js"></script>
+  <script src="user.js"></script>
+</body>
+</html>

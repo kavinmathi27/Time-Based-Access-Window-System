@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | AccessControl</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body onload="loadAdmin()">
+
+  <div class="navbar">
+    <a href="#" class="brand">AccessControl <span class="text-sm text-muted">| Admin</span></a>
+    <a href="#" onclick="logout()" class="text-muted">Logout</a>
+  </div>
+
+  <div class="dashboard-container">
+    <div class="welcome-banner">
+      <h2>Admin Dashboard</h2>
+      <p class="text-muted">Manage user access windows.</p>
+    </div>
+
+    <div class="app-grid">
+      <!-- Set Access Window -->
+      <div class="card">
+        <h3>Set Access Window</h3>
+        <p class="text-muted" style="margin-bottom:1.5rem;">Assign working hours for a user.</p>
+        <label>User Email</label>
+        <input id="userEmail" type="email" placeholder="Enter user email">
+        <label>Start Time</label>
+        <input id="startTime" type="datetime-local">
+        <label>End Time</label>
+        <input id="endTime" type="datetime-local">
+        <button onclick="setAccess()">Update Access Window</button>
+      </div>
+
+      <!-- Server Clock -->
+      <div class="card">
+        <h3>Server Time</h3>
+        <p class="text-muted">Current local time.</p>
+        <div id="server-time" style="font-size:2.5rem; font-weight:700; color:var(--primary); margin-top:2rem;">--:--:--</div>
+      </div>
+    </div>
+
+    <!-- Access Windows Table -->
+    <div class="card" style="margin-top:2rem;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+        <h3 style="margin:0;">All Access Windows</h3>
+        <button onclick="loadAllUsers()" style="width:auto; padding:0.5rem 1.25rem; font-size:0.85rem;">↻ Refresh</button>
+      </div>
+      <div style="overflow-x:auto;">
+        <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+          <thead>
+            <tr style="border-bottom:1px solid var(--border); text-align:left; color:var(--text-muted);">
+              <th style="padding:0.75rem 1rem;">Name</th>
+              <th style="padding:0.75rem 1rem;">Email</th>
+              <th style="padding:0.75rem 1rem;">Start Time</th>
+              <th style="padding:0.75rem 1rem;">End Time</th>
+              <th style="padding:0.75rem 1rem;">Status</th>
+            </tr>
+          </thead>
+          <tbody id="users-table-body">
+            <tr><td colspan="5" style="padding:1.5rem; text-align:center; color:var(--text-muted);">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/api.js"></script>
+  <script src="../assets/js/utils.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

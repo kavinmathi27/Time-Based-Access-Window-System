@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time-Based Access Control</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+  <div class="navbar">
+    <a href="#" class="brand">AccessControl</a>
+    <div class="links">
+      <a href="auth/login.html">Login</a>
+      <a href="auth/register.html">Register</a>
+    </div>
+  </div>
+
+  <div class="hero">
+    <h1>Precision Access,<br>Perfectly Timed.</h1>
+    <p>Secure your premises with time-based access control. Grant permissions that expire automatically.</p>
+    <div class="hero-buttons">
+      <a href="auth/login.html"><button>Get Started</button></a>
+      <a href="auth/register.html"><button class="btn-secondary">Register</button></a>
+    </div>
+  </div>
+
+  <script>
+    const token = localStorage.getItem("token");
+    if (token) {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      window.location.href = payload.role === "ADMIN" ? "admin/dashboard.html" : "user/dashboard.html";
+    }
+  </script>
+</body>
+
+</html>
