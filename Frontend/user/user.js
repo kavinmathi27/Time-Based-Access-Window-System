@@ -5,7 +5,7 @@ async function loadUser() {
     const name = payload.name || payload.email || "User";
     const el = document.getElementById("welcome-msg");
     if (el) el.innerText = `Welcome back, ${name}`;
-  } catch (e) {}
+  } catch (e) { }
 
   const res = await apiRequest("/user/access-status");
   const data = await res.json();
@@ -14,17 +14,17 @@ async function loadUser() {
   const officeDashboard = document.getElementById("office-dashboard");
 
   if (res.ok && data.status === "active") {
-    
+
     lockScreen.classList.add("hidden");
     officeDashboard.classList.remove("hidden");
 
-    
+
     if (data.endTime) {
       startCountdown(new Date(data.endTime));
       startAccessPoller();
     }
   } else {
-   
+
     lockScreen.classList.remove("hidden");
     officeDashboard.classList.add("hidden");
 
@@ -42,7 +42,7 @@ async function loadUser() {
         shiftEl.innerText = `Ended: ${new Date(data.endTime).toLocaleString()}`;
       }
     } else {
-      
+
       if (shiftEl && data.message) shiftEl.innerText = data.message;
     }
   }
@@ -60,7 +60,7 @@ function startAccessPoller() {
     } catch (err) {
       console.error("Access poller error:", err);
     }
-  }, 60000); 
+  }, 60000);
 }
 
 
@@ -98,6 +98,6 @@ function startCountdown(endTime) {
     }
   }
 
-  tick(); 
-  setInterval(tick, 1000); 
+  tick();
+  setInterval(tick, 1000);
 }

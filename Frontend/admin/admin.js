@@ -56,9 +56,9 @@ async function loadAllUsers() {
       const start = new Date(w.startTime);
       const end = new Date(w.endTime);
       let label, color;
-      if (now >= start && now <= end)   { label = "● Active";   color = "#22c55e"; }
-      else if (now < start)             { label = "◌ Upcoming"; color = "#f59e0b"; }
-      else                              { label = "✕ Expired";  color = "#ef4444"; }
+      if (now >= start && now <= end) { label = "● Active"; color = "#22c55e"; }
+      else if (now < start) { label = "◌ Upcoming"; color = "#f59e0b"; }
+      else { label = "✕ Expired"; color = "#ef4444"; }
 
       return `<tr style="border-bottom:1px solid var(--border);">
         <td style="padding:0.85rem 1rem;">${w.name || "—"}</td>
