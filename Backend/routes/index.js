@@ -13,6 +13,7 @@ router.post("/login", authController.login);
 
 router.post("/admin/access-window", auth, adminController.setAccessWindow);
 router.get("/admin/all-access-windows", auth, adminController.getAllAccessWindows);
+router.delete("/admin/access-window", auth, adminController.deleteAccessWindow);
 
 router.get("/user/access-status", auth, timeWindow, userController.getAccessStatus);
 

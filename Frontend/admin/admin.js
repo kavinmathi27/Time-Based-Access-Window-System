@@ -66,10 +66,22 @@ async function loadAllUsers() {
         <td style="padding:0.85rem 1rem;">${start.toLocaleString()}</td>
         <td style="padding:0.85rem 1rem;">${end.toLocaleString()}</td>
         <td style="padding:0.85rem 1rem;font-weight:600;color:${color};">${label}</td>
+        <td style="padding:0.85rem 1rem;">
+          <button onclick="deleteAccess('${w.email}')" style="width:auto !important;padding:0.35rem 0.9rem;font-size:0.8rem;background:#ef4444;color:white;border-radius:8px;border:none;cursor:pointer;">Delete</button>
+        </td>
       </tr>`;
     }).join("");
 
   } catch (err) {
     tbody.innerHTML = `<tr><td colspan="5" style="padding:1.5rem;text-align:center;color:#ef4444;">Error connecting to server.</td></tr>`;
   }
+}
+
+async function deleteAccess(email) {
+  if (!confirm(`Delete access window for ${email}?`)) return;
+
+  const res = await apiRequest("/admin/access-window", "DELETE", { email });
+  const data = await res.json();
+  alert(data.message);
+  if (res.ok) loadAllUsers();
 }
